@@ -1,0 +1,16 @@
+{
+  "title": "Checkout incident investigation",
+  "schemaVersion": 39,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Synthetic checkout outcomes",
+      "targets": [{"expr": "sum by (checkout_outcome) (rate(checkout_requests_total_total[5m]))"}]
+    },
+    {
+      "type": "logs",
+      "title": "Correlated application logs",
+      "targets": [{"expr": "{service_name=\"checkout-api\"}"}]
+    }
+  ]
+}
